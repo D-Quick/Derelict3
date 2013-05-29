@@ -17,9 +17,9 @@ class DerelictGLLoader : DerelictGL3Loader
 {
     public
     {
-        override GLVersion reload()
+        override GLVersion reload(GLVersion versionLimit = GLVersion.HighestSupported, bool loadExtension = true)
         {
-            GLVersion maxVer = super.reload();
+            GLVersion maxVer = super.reload(versionLimit, loadExtension);
 
             if(maxVer >= GLVersion.GL12)
             {

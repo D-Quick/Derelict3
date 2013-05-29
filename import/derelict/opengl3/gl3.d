@@ -74,7 +74,7 @@ class DerelictGL3Loader : SharedLibLoader
             return _loadedVersion;
         }
 
-        GLVersion reload()
+        GLVersion reload(GLVersion versionLimit = GLVersion.HighestSupported, bool loadExtension = true)
         {
             // Make sure a context is active, otherwise this could be meaningless.
             if(!hasValidContext())
@@ -82,6 +82,9 @@ class DerelictGL3Loader : SharedLibLoader
 
             GLVersion glVer = GLVersion.GL11;
             GLVersion maxVer = findMaxAvailable();
+
+			if (versionLimit < maxVer)
+				maxVer = versionLimit;
 
             if(maxVer >= GLVersion.GL12)
             {
@@ -399,7 +402,7 @@ class DerelictGL3Loader : SharedLibLoader
             {
                 load_ARB_clear_buffer_object(true);
                 load_ARB_compute_shader(true);
-                load_KHR_debug(true);
+//                load_KHR_debug(true);
                 load_ARB_framebuffer_no_attachments(true);
                 load_ARB_internalformat_query2(true);
                 load_ARB_invalidate_subdata(true);
@@ -414,8 +417,11 @@ class DerelictGL3Loader : SharedLibLoader
                 glVer = GLVersion.GL43;
             }
 
-            loadARB(glVer);
-            loadEXT(glVer);
+			if (loadExtension)
+			{
+				loadARB(glVer);
+				loadEXT(glVer);
+			}
 
             _loadedVersion = glVer;
             return glVer;
