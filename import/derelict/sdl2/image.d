@@ -163,7 +163,7 @@ class DerelictSDL2ImageLoader : SharedLibLoader
             bindFunc(cast(void**)&IMG_LoadTyped_RW, "IMG_LoadTyped_RW");
             bindFunc(cast(void**)&IMG_Load, "IMG_Load");
             bindFunc(cast(void**)&IMG_Load_RW, "IMG_Load_RW");
-            bindFunc(cast(void**)&IMG_InvertAlpha, "IMG_InvertAlpha");
+//            bindFunc(cast(void**)&IMG_InvertAlpha, "IMG_InvertAlpha");
             bindFunc(cast(void**)&IMG_isBMP, "IMG_isBMP");
             bindFunc(cast(void**)&IMG_isGIF, "IMG_isGIF");
             bindFunc(cast(void**)&IMG_isJPG, "IMG_isJPG");
