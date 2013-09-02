@@ -170,7 +170,7 @@ extern(C)
     alias nothrow FT_Error function(FT_Face face, FT_UInt gindex, FT_Pos *aadvance) da_FT_Get_PFR_Advance;
     alias nothrow FT_StrokerBorder function(FT_Outline* outline) da_FT_Outline_GetInsideBorder;
     alias nothrow FT_StrokerBorder function(FT_Outline* outline) da_FT_Outline_GetOutsideBorder;
-    alias nothrow FT_Error function(FT_Memory memory, FT_Stroker *astroker) da_FT_Stroker_New;
+    alias nothrow FT_Error function(FT_Library library, FT_Stroker *astroker) da_FT_Stroker_New;
     alias nothrow void function(FT_Stroker stroker, FT_Fixed radius, FT_Stroker_LineCap line_cap, FT_Stroker_LineJoin line_join, FT_Fixed miter_limit) da_FT_Stroker_Set;
     alias nothrow void function(FT_Stroker stroker) da_FT_Stroker_Rewind;
     alias nothrow FT_Error function(FT_Stroker stroker, FT_Outline* outline, FT_Bool opened) da_FT_Stroker_ParseOutline;
