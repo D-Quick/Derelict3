@@ -120,7 +120,32 @@ const int LUA_MASKRET = 1 << LUA_HOOKRET;
 const int LUA_MASKLINE = 1 << LUA_HOOKLINE;
 const int LUA_MASKCOUNT = 1 << LUA_HOOKCOUNT;
 
-struct lua_Debug;
+/*
+@@ LUA_IDSIZE gives the maximum size for the description of the source
+@* of a function in debug information.
+** CHANGE it if you want a different size.
+*/
+const int LUA_IDSIZE = 60;
+
+struct CallInfo;
+
+struct lua_Debug {
+	int event;
+	const char *name;	/* (n) */
+	const char *namewhat;	/* (n) 'global', 'local', 'field', 'method' */
+	const char *what;	/* (S) 'Lua', 'C', 'main', 'tail' */
+	const char *source;	/* (S) */
+	int currentline;	/* (l) */
+	int linedefined;	/* (S) */
+	int lastlinedefined;	/* (S) */
+	ubyte nups;	/* (u) number of upvalues */
+	ubyte nparams;/* (u) number of parameters */
+	ubyte isvararg;        /* (u) */
+	ubyte istailcall;	/* (t) */
+	char short_src[LUA_IDSIZE]; /* (S) */
+	/* private part */
+	CallInfo *i_ci;  /* active function */
+};
 
 alias void function(lua_State *L, lua_Debug *ar) lua_Hook;
 //lauxlib.h
